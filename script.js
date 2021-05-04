@@ -16,14 +16,14 @@ function divide (num1, num2) {
 
 let operate = (num1, num2, operator) => {
 	if (operator == "add") {
-		add();
+		add(num1, num2);
 	} else if (operator == "subtract") {
-		subtract();	
+		subtract(num1, num2);	
 	} else if (operator == "multiply") {
-		multiply();
+		multiply(num1, num2);
 	}
 	else if (operator == "divide") {
-		divide();
+		divide(num1, num2);
 	}
 }
 
