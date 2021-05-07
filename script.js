@@ -1,3 +1,6 @@
+const display = document.querySelector("#display");
+const digits = document.querySelectorAll(".digits");
+
 function add(num1, num2) {
 	return num1 + num2;
 }
@@ -32,11 +35,24 @@ console.log(subtract(5, 2));
 console.log(multiply(5, 2));
 console.log(divide(10, 2));
 
-const digits = document.querySelectorAll(".digits");
-for (let i=0; i < digits.length; i++) {
+let storedNumber = "";
+for (let i = 0; i < digits.length; i++) {
 	let digit = digits[i];
 	digit.addEventListener("click", () => {
-		document.getElementById("display").innerHTML += digit.textContent;
+		storedNumber += digit.textContent;
+		display.textContent = storedNumber;
 		console.log("added number to display!");
 	});
 };
+
+/* code works
+let storedNumber = "";
+for (let i = 0; i < digits.length; i++) {
+	let digit = digits[i];
+	digit.addEventListener("click", () => {
+		storedNumber += digit.textContent;
+		display.textContent += storedNumber;
+		console.log("added number to display!");
+	});
+};
+*/
