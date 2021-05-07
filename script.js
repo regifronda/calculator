@@ -33,15 +33,10 @@ console.log(multiply(5, 2));
 console.log(divide(10, 2));
 
 const digits = document.querySelectorAll(".digits");
-
-digits.forEach(function showDigit(digit){
-	digit.addEventListener("click", function() {
-		console.log("click!");
+for (let i=0; i < digits.length; i++) {
+	let digit = digits[i];
+	digit.addEventListener("click", () => {
+		document.getElementById("display").innerHTML += digit.textContent;
+		console.log("added number to display!");
 	});
-});
-/*only get console log for 1 digit button 
-const digits = document.querySelector(".digits");
-
-digit.addEventListener("click", () => {
-	console.log("click!")
-});*/
+};
