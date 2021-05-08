@@ -36,6 +36,8 @@ console.log(multiply(5, 2));
 console.log(divide(10, 2));
 
 let storedNumber = "";
+
+
 for (let i = 0; i < digits.length; i++) {
 	let digit = digits[i];
 	digit.addEventListener("click", () => {
@@ -45,14 +47,4 @@ for (let i = 0; i < digits.length; i++) {
 	});
 };
 
-/* code works
-let storedNumber = "";
-for (let i = 0; i < digits.length; i++) {
-	let digit = digits[i];
-	digit.addEventListener("click", () => {
-		storedNumber += digit.textContent;
-		display.textContent += storedNumber;
-		console.log("added number to display!");
-	});
-};
-*/
+
