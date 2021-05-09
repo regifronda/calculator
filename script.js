@@ -1,6 +1,6 @@
 const display = document.querySelector("#display");
 const digits = document.querySelectorAll(".digits");
-
+const operatorBtn = document.querySelectorAll(".operator");
 function add(num1, num2) {
 	return num1 + num2;
 }
@@ -37,14 +37,20 @@ console.log(divide(10, 2));
 
 let storedNumber = "";
 
-
 for (let i = 0; i < digits.length; i++) {
 	let digit = digits[i];
 	digit.addEventListener("click", () => {
 		storedNumber += digit.textContent;
 		display.textContent = storedNumber;
-		console.log("added number to display!");
+		console.log(storedNumber + " is on display!");
 	});
 };
 
-
+operatorBtn.forEach((operator) => {
+	operator.addEventListener("click", function() {
+	firstNumber = storedNumber;
+	console.log("storedNumber " + storedNumber + " is assigned to firstNumber " + firstNumber);
+	
+	
+	});
+});
