@@ -35,22 +35,28 @@ console.log(subtract(5, 2));
 console.log(multiply(5, 2));
 console.log(divide(10, 2));
 
-let storedNumber = "";
+let storedNum = "";
+let firstNum = "";
+let pressedOperator = "";
+let previousNum = "";
 
 for (let i = 0; i < digits.length; i++) {
 	let digit = digits[i];
 	digit.addEventListener("click", () => {
-		storedNumber += digit.textContent;
-		display.textContent = storedNumber;
-		console.log(storedNumber + " is on display!");
+		storedNum += digit.textContent;
+		display.textContent = storedNum;
+		console.log("storedNum "+ storedNum + " is on display!");
 	});
 };
 
 operatorBtn.forEach((operator) => {
 	operator.addEventListener("click", function() {
-	firstNumber = storedNumber;
-	console.log("storedNumber " + storedNumber + " is assigned to firstNumber " + firstNumber);
-	
-	
+	firstNum = storedNum;
+	console.log("storedNum " + storedNum + " is assigned to firstNum, which is now " + firstNum);
+
+	pressedOperator = operator.textContent;
+	console.log("pressedOperator is " + pressedOperator);
+	storedNum = "";
+
 	});
 });
