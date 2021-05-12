@@ -41,6 +41,7 @@ let firstNum = "";
 let pressedOperator = "";
 let previousNum = "";
 
+
 for (let i = 0; i < digits.length; i++) {
 	let digit = digits[i];
 	digit.addEventListener("click", () => {
@@ -52,6 +53,11 @@ for (let i = 0; i < digits.length; i++) {
 
 operatorBtn.forEach((operator) => {
 	operator.addEventListener("click", function() {
+		if (firstNum && storedNum)  {
+			console.log("firstNum and storedNum already have numbers in them so showResult()!")
+			showResult();
+		}
+		
 	firstNum = storedNum;
 	console.log("storedNum " + storedNum + " is assigned to firstNum, which is now " + firstNum);
 
@@ -61,12 +67,12 @@ operatorBtn.forEach((operator) => {
 	});
 });
 
-const calculate = () => {
-	const result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
+equalsBtn.addEventListener("click", showResult);
+
+function showResult() {
+	let result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
 	display.textContent = result;
 	console.log("result on display is " + result);
 	storedNum = result;
 	console.log("result " + result + " is assigned to storedNum, which is now " + storedNum);
 }
-
-equalsBtn.addEventListener("click", calculate);
