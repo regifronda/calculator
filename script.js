@@ -67,7 +67,14 @@ operatorBtn.forEach((operator) => {
 	});
 });
 
-equalsBtn.addEventListener("click", showResult);
+equalsBtn.addEventListener("click", function() {
+	// Allows user to press a number button and then the equals button
+	storedNum = display.textContent;
+	// First number is kept while  storing the number on display
+	console.log("Clicked equals, but before showResult(), storedNum is set to display.textContent " + display.textContent);
+	console.log("Clicked equals and firstNum is " + firstNum);
+	showResult();
+});
 
 function showResult() {
 	let result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
