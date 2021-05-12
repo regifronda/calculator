@@ -64,6 +64,9 @@ operatorBtn.forEach((operator) => {
 const calculate = () => {
 	const result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
 	display.textContent = result;
+	console.log("result on display is " + result);
+	storedNum = result;
+	console.log("result " + result + " is assigned to storedNum, which is now " + storedNum);
 }
 
 equalsBtn.addEventListener("click", calculate);
