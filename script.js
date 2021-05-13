@@ -40,11 +40,17 @@ let storedNum = "";
 let firstNum = "";
 let pressedOperator = "";
 let previousNum = "";
+let result = "";
 
 
 for (let i = 0; i < digits.length; i++) {
 	let digit = digits[i];
 	digit.addEventListener("click", () => {
+		if (result) {
+			storedNum = "";
+			firstNum = "";
+			result = "";
+		}
 		storedNum += digit.textContent;
 		display.textContent = storedNum;
 		console.log("storedNum "+ storedNum + " is on display!");
@@ -68,7 +74,7 @@ operatorBtn.forEach((operator) => {
 });
 
 equalsBtn.addEventListener("click", function() {
-	// Allows user to press a number button and then the equals button
+	// Allows user to press a number button, then an op button, then equals
 	storedNum = display.textContent;
 	// First number is kept while  storing the number on display
 	console.log("Clicked equals, but before showResult(), storedNum is set to display.textContent " + display.textContent);
@@ -77,7 +83,7 @@ equalsBtn.addEventListener("click", function() {
 });
 
 function showResult() {
-	let result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
+	result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
 	display.textContent = result;
 	console.log("result on display is " + result);
 	storedNum = result;
