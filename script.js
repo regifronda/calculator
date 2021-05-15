@@ -39,6 +39,7 @@ const equalsBtn = document.querySelector(".equals");
 let storedNum = "";
 let firstNum = "";
 let pressedOperator = "";
+let oldOperator = "";
 let previousNum = "";
 let result = "";
 
@@ -60,7 +61,11 @@ operatorBtn.forEach((operator) => {
 		
 	firstNum = storedNum;
 	console.log("storedNum " + storedNum + " is assigned to firstNum, which is now " + firstNum);
-
+	if (pressedOperator) {
+		oldOperator = pressedOperator;
+		console.log("pressedOperator already exists!");
+		console.log("pressedOperator: " + pressedOperator + pressedOperator + " oldOperator: " + oldOperator);
+	}
 	pressedOperator = operator.textContent;
 	console.log("pressedOperator is " + pressedOperator);
 	storedNum = "";
@@ -71,6 +76,11 @@ equalsBtn.addEventListener("click", function() {
 	// prevents display box errors if pressing equals button too early
 	if ((storedNum && firstNum == "") || (storedNum == "" && firstNum == "")) {
 		return;
+	}
+
+	if (oldOperator != pressedOperator) {
+		console.log("operator has changed!");
+		console.log("oldOperator: " + oldOperator + " pressedOperator " + pressedOperator);
 	}
 	// Allows user to press a number button, then an op button, then equals
 	storedNum = display.textContent;
