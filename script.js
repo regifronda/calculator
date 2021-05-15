@@ -67,46 +67,6 @@ operatorBtn.forEach((operator) => {
 	});
 });
 
-equalsBtn.addEventListener("click", showResult);
-
-function showResult() {
-	let result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
-	display.textContent = result;
-	console.log("result on display is " + result);
-	storedNum = result;
-	console.log("result " + result + " is assigned to storedNum, which is now " + storedNum);
-}
-
-/*for (let i = 0; i < digits.length; i++) {
-	let digit = digits[i];
-	digit.addEventListener("click", () => {
-		if (result) {
-			storedNum = "";
-			firstNum = "";
-			result = "";
-		}
-		storedNum += digit.textContent;
-		display.textContent = storedNum;
-		console.log("storedNum "+ storedNum + " is on display!");
-	});
-};
-
-operatorBtn.forEach((operator) => {
-	operator.addEventListener("click", function() {
-		if (firstNum && storedNum)  {
-			console.log("firstNum and storedNum already have numbers in them so showResult()!")
-			showResult();
-		}
-		
-	firstNum = storedNum;
-	console.log("storedNum " + storedNum + " is assigned to firstNum, which is now " + firstNum);
-
-	pressedOperator = operator.textContent;
-	console.log("pressedOperator is " + pressedOperator);
-	storedNum = "";
-	});
-});
-
 equalsBtn.addEventListener("click", function() {
 	// prevents display box errors if pressing equals button too early
 	if ((storedNum && firstNum == "") || (storedNum == "" && firstNum == "")) {
@@ -121,9 +81,9 @@ equalsBtn.addEventListener("click", function() {
 });
 
 function showResult() {
-	result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
+	let result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
 	display.textContent = result;
-	console.log("firstNum " + firstNum + " storedNum " + storedNum + " result on display is " + result);
+	console.log("result on display is " + result);
 	storedNum = result;
 	console.log("result " + result + " is assigned to storedNum, which is now " + storedNum);
-}*/
+}
