@@ -74,6 +74,10 @@ operatorBtn.forEach((operator) => {
 });
 
 equalsBtn.addEventListener("click", function() {
+	// prevents display box errors if pressing equals button too early
+	if ((storedNum && firstNum == "") || (storedNum == "" && firstNum == "")) {
+		return;
+	}
 	// Allows user to press a number button, then an op button, then equals
 	storedNum = display.textContent;
 	// First number is kept while  storing the number on display
@@ -85,7 +89,7 @@ equalsBtn.addEventListener("click", function() {
 function showResult() {
 	result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
 	display.textContent = result;
-	console.log("result on display is " + result);
+	console.log("firstNum " + firstNum + " storedNum " + storedNum + " result on display is " + result);
 	storedNum = result;
 	console.log("result " + result + " is assigned to storedNum, which is now " + storedNum);
 }
