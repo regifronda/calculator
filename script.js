@@ -1,3 +1,15 @@
+const display = document.querySelector("#display");
+const digits = document.querySelectorAll(".digits");
+const operatorBtn = document.querySelectorAll(".operator");
+const equalsBtn = document.querySelector(".equals");
+let storedNum = "";
+let firstNum = "";
+let pressedOperator = "";
+let oldOperator = "";
+let previousNum = "";
+let result = "";
+let firstNumHolder = "";
+
 function add(num1, num2) {
 	return num1 + num2;
 }
@@ -32,17 +44,6 @@ console.log(subtract(5, 2));
 console.log(multiply(5, 2));
 console.log(divide(10, 2));
 
-const display = document.querySelector("#display");
-const digits = document.querySelectorAll(".digits");
-const operatorBtn = document.querySelectorAll(".operator");
-const equalsBtn = document.querySelector(".equals");
-let storedNum = "";
-let firstNum = "";
-let pressedOperator = "";
-let oldOperator = "";
-let previousNum = "";
-let result = "";
-
 for (let i = 0; i < digits.length; i++) {
 	let digit = digits[i];
 	digit.addEventListener("click", () => {
@@ -61,11 +62,6 @@ operatorBtn.forEach((operator) => {
 		
 	firstNum = storedNum;
 	console.log("storedNum " + storedNum + " is assigned to firstNum, which is now " + firstNum);
-	
-	// Trying to set variable oldOperator to previous pressedOperator to check if operator has changed after clicking equals button
-	if (pressedOperator) {
-		oldOperator = pressedOperator;
-	}
 
 	pressedOperator = operator.textContent;
 	console.log("pressedOperator is " + pressedOperator);
@@ -84,9 +80,15 @@ equalsBtn.addEventListener("click", function() {
 		console.log("operator hasn't changed!");
 		console.log("oldOperator: " + oldOperator + " pressedOperator " + pressedOperator);
 		firstNum = display.textContent;
+    	storedNum = firstNumHolder;
 		showResult();
+    	return;
 	}
-
+  	// Set variable oldOperator to previous pressedOperator to check if operator has changed after clicking equals button
+	if (pressedOperator) {
+		oldOperator = pressedOperator;
+		console.log("oldOperator "+ oldOperator + " has been stored");
+	}
 	// Allows user to press a number button, then an op button, then equals
 	storedNum = display.textContent;
 	// First number is kept while  storing the number on display
@@ -99,7 +101,9 @@ function showResult() {
 	let result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
 	display.textContent = result;
 	console.log("firstNum: " + firstNum + " storedNum: " + storedNum + " result on display is " + result);
-	
+    // allows firstNum to persist in a following evaluation
+	firstNumHolder = storedNum;
+  	console.log("firstNumHolder " + firstNumHolder);
 	storedNum = result;
 	console.log("result " + result + " is assigned to storedNum, which is now " + storedNum);
 }
