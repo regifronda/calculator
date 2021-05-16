@@ -2,11 +2,11 @@ const display = document.querySelector("#display");
 const digits = document.querySelectorAll(".digits");
 const operatorBtn = document.querySelectorAll(".operator");
 const equalsBtn = document.querySelector(".equals");
+const clearBtn = document.querySelector(".clear");
 let storedNum = "";
 let firstNum = "";
 let pressedOperator = "";
 let oldOperator = "";
-let previousNum = "";
 let result = "";
 let firstNumHolder = "";
 
@@ -80,11 +80,11 @@ equalsBtn.addEventListener("click", function() {
 		console.log("operator hasn't changed!");
 		console.log("oldOperator: " + oldOperator + " pressedOperator " + pressedOperator);
 		firstNum = display.textContent;
-    	storedNum = firstNumHolder;
+    storedNum = firstNumHolder;
 		showResult();
-    	return;
+    return;
 	}
-  	// Set variable oldOperator to previous pressedOperator to check if operator has changed after clicking equals button
+  // Trying to set variable oldOperator to previous pressedOperator to check if operator has changed after clicking equals button
 	if (pressedOperator) {
 		oldOperator = pressedOperator;
 		console.log("oldOperator "+ oldOperator + " has been stored");
@@ -97,13 +97,23 @@ equalsBtn.addEventListener("click", function() {
 	showResult();
 });
 
+clearBtn.addEventListener("click", function(){
+  storedNum = "";
+  firstNum = "";
+  firstNumHolder = "";
+  pressedOperator = "";
+  oldOperator = "";
+  result = "";
+  display.textContent = "0";
+});
+
 function showResult() {
 	let result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
 	display.textContent = result;
 	console.log("firstNum: " + firstNum + " storedNum: " + storedNum + " result on display is " + result);
     // allows firstNum to persist in a following evaluation
 	firstNumHolder = storedNum;
-  	console.log("firstNumHolder " + firstNumHolder);
+  console.log("firstNumHolder " + firstNumHolder);
 	storedNum = result;
 	console.log("result " + result + " is assigned to storedNum, which is now " + storedNum);
 }
