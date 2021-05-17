@@ -70,8 +70,15 @@ operatorBtn.forEach((operator) => {
 });
 
 equalsBtn.addEventListener("click", function() {
+	if (storedNum === "" && firstNum === "" && pressedOperator == "/" ) {
+		alert("Don't divide by 0 silly!");
+		console.log("Don't divide by 0 silly!");
+		return;
+	}
+
 	// prevents display box errors if pressing equals button too early
-	if ((storedNum && firstNum == "") || (storedNum == "" && firstNum == "")) {
+	if ((storedNum && firstNum === "") || (storedNum === "" && firstNum === "")) {
+		console.log("pre-emptive equals occured!");
 		return;
 	}
 
@@ -84,11 +91,13 @@ equalsBtn.addEventListener("click", function() {
 		showResult();
     return;
 	}
+
     // Trying to set variable oldOperator to previous pressedOperator to check if operator has changed after clicking equals button
 	if (pressedOperator) {
 		oldOperator = pressedOperator;
 		console.log("oldOperator "+ oldOperator + " has been stored");
 	}
+	
 	// Allows user to press a number button, then an op button, then equals
 	storedNum = display.textContent;
 	// First number is kept while  storing the number on display
