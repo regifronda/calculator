@@ -84,7 +84,7 @@ equalsBtn.addEventListener("click", function() {
 		showResult();
     return;
 	}
-  // Trying to set variable oldOperator to previous pressedOperator to check if operator has changed after clicking equals button
+    // Trying to set variable oldOperator to previous pressedOperator to check if operator has changed after clicking equals button
 	if (pressedOperator) {
 		oldOperator = pressedOperator;
 		console.log("oldOperator "+ oldOperator + " has been stored");
@@ -97,7 +97,7 @@ equalsBtn.addEventListener("click", function() {
 	showResult();
 });
 
-clearBtn.addEventListener("click", function(){
+clearBtn.addEventListener("click", function() {
   storedNum = "";
   firstNum = "";
   firstNumHolder = "";
@@ -109,11 +109,24 @@ clearBtn.addEventListener("click", function(){
 
 function showResult() {
 	let result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
+	if (result.toString().length > 8) {
+		display.textContent = result.toString().slice(0, 8);
+		console.log("STRING LONG! display's length is " + display.textContent.length);
+		console.log("firstNum: " + firstNum + " storedNum: " + storedNum + " result on display is " + result);
+    	// allows firstNum to persist in a following evaluation
+		firstNumHolder = storedNum;
+    	console.log("firstNumHolder " + firstNumHolder);
+		storedNum = result;
+		console.log("result " + result + " is assigned to storedNum, which is now " + storedNum);
+		return;
+	}
+
 	display.textContent = result;
+	console.log("display's length is " + display.textContent.length);
 	console.log("firstNum: " + firstNum + " storedNum: " + storedNum + " result on display is " + result);
     // allows firstNum to persist in a following evaluation
 	firstNumHolder = storedNum;
-  console.log("firstNumHolder " + firstNumHolder);
+    console.log("firstNumHolder " + firstNumHolder);
 	storedNum = result;
 	console.log("result " + result + " is assigned to storedNum, which is now " + storedNum);
 }
