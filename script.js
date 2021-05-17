@@ -109,15 +109,22 @@ clearBtn.addEventListener("click", function() {
 
 function showResult() {
 	let result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
+	console.log("result: " + result);
 	if (result.toString().length > 8) {
-		display.textContent = result.toString().slice(0, 8);
-		console.log("STRING LONG! display's length is " + display.textContent.length);
-		console.log("firstNum: " + firstNum + " storedNum: " + storedNum + " result on display is " + result);
+		const round = (number, decimalPlaces) => {
+			const factorOfTen = Math.pow(10, decimalPlaces);
+			return Math.round(number * factorOfTen) / factorOfTen;
+		}
+
+		let roundedResult = round(result, 8);
+		console.log("roundedResult: " + roundedResult);
+		display.textContent = roundedResult;
+		console.log("firstNum: " + firstNum + " storedNum: " + storedNum + " result on display is " + roundedResult);
     	// allows firstNum to persist in a following evaluation
 		firstNumHolder = storedNum;
     	console.log("firstNumHolder " + firstNumHolder);
-		storedNum = result;
-		console.log("result " + result + " is assigned to storedNum, which is now " + storedNum);
+		storedNum = roundedResult;
+		console.log("roundedResult " + roundedResult + " is assigned to storedNum, which is now " + storedNum);
 		return;
 	}
 
