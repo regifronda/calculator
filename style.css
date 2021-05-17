@@ -1,3 +1,12 @@
+body {
+    font-family: sans-serif;
+}
+
+#container {
+    display: grid;
+    justify-content: center;
+}
+
 #display {
     border: 1px solid green;
 }
