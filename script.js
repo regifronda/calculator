@@ -71,7 +71,7 @@ operatorBtn.forEach((operator) => {
 
 equalsBtn.addEventListener("click", function() {
 	if ((storedNum === "" && firstNum === "" && pressedOperator === "/") || (storedNum === "0" && pressedOperator === "/")) {
-		alert("Don't divide by 0 silly!");
+		alert("Don't divide by 0, silly!");
 		console.log("Don't divide by 0 silly!");
 		storedNum = "";
   		firstNum = "";
