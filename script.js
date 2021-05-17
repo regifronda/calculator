@@ -70,9 +70,16 @@ operatorBtn.forEach((operator) => {
 });
 
 equalsBtn.addEventListener("click", function() {
-	if (storedNum === "" && firstNum === "" && pressedOperator == "/" ) {
+	if ((storedNum === "" && firstNum === "" && pressedOperator === "/") || (storedNum === "0" && pressedOperator === "/")) {
 		alert("Don't divide by 0 silly!");
 		console.log("Don't divide by 0 silly!");
+		storedNum = "";
+  		firstNum = "";
+  		firstNumHolder = "";
+  		pressedOperator = "";
+  		oldOperator = "";
+  		result = "";
+  		display.textContent = "0";
 		return;
 	}
 
@@ -87,9 +94,9 @@ equalsBtn.addEventListener("click", function() {
 		console.log("operator hasn't changed!");
 		console.log("oldOperator: " + oldOperator + " pressedOperator " + pressedOperator);
 		firstNum = display.textContent;
-    storedNum = firstNumHolder;
+    	storedNum = firstNumHolder;
 		showResult();
-    return;
+    	return;
 	}
 
     // Trying to set variable oldOperator to previous pressedOperator to check if operator has changed after clicking equals button
