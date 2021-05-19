@@ -126,13 +126,13 @@ clearBtn.addEventListener("click", function() {
 function showResult() {
 	let result = operate(parseFloat(firstNum), parseFloat(storedNum), pressedOperator)
 	console.log("result: " + result);
-	if (result.toString().length > 8) {
+	if (result.toString().length > 10) {
 		const round = (number, decimalPlaces) => {
 			const factorOfTen = Math.pow(10, decimalPlaces);
 			return Math.round(number * factorOfTen) / factorOfTen;
 		}
 
-		let roundedResult = round(result, 8);
+		let roundedResult = round(result, 10);
 		console.log("roundedResult: " + roundedResult);
 		display.textContent = roundedResult;
 		console.log("firstNum: " + firstNum + " storedNum: " + storedNum + " result on display is " + roundedResult);
