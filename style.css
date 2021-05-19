@@ -1,5 +1,6 @@
 body {
     font-family: sans-serif;
+    background: #659DBD;
 }
 
 #container {
@@ -26,7 +27,7 @@ body {
     flex-direction: column;
     font-size: 25px;
     padding: 10px;
-    border: 1px solid green;
+    border: 5px solid blue;
 }
 
 button {
