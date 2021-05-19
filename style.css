@@ -27,9 +27,14 @@ body {
     flex-direction: column;
     font-size: 25px;
     padding: 10px;
-    border: 5px solid blue;
+    border: 3px solid green;
 }
 
 button {
     cursor: pointer;
+    background-color: #FBEEC1;
+}
+
+.operator {
+    background-color: #DAAD86;
 }
